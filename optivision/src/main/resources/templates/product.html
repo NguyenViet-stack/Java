@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OptiVision - Chi tiết sản phẩm</title>
+    <style>
+        /* CSS Cơ bản mô phỏng giao diện */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* Header */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #ddd; }
+        .logo { font-size: 24px; font-weight: bold; }
+        .search-bar { width: 400px; padding: 10px; border: 1px solid #ccc; border-radius: 20px; }
+        .header-links span { margin-left: 20px; cursor: pointer; }
+
+        /* Breadcrumb */
+        .breadcrumb { margin: 20px 0; font-size: 14px; color: #666; }
+
+        /* Main Content Grid */
+        .product-main { display: flex; gap: 40px; }
+
+        /* Left: Images */
+        .product-images { flex: 1; }
+        .main-image { width: 100%; height: 500px; background-color: #e0e0e0; border-radius: 10px; object-fit: cover; }
+        .thumbnail-list { display: flex; gap: 10px; margin-top: 10px; }
+        .thumbnail { width: 80px; height: 80px; background-color: #ddd; border-radius: 8px; }
+
+        /* Right: Info */
+        .product-info { flex: 1; }
+        .brand { color: #888; font-size: 14px; }
+        .title { font-size: 28px; margin: 5px 0; }
+        .price { font-size: 24px; font-weight: bold; color: #000; margin-bottom: 20px; }
+        .desc { color: #555; line-height: 1.6; margin-bottom: 20px; }
+
+        /* Order Types */
+        .order-types { display: flex; gap: 15px; margin-bottom: 20px; }
+        .order-card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; text-align: center; flex: 1; cursor: pointer; }
+        .order-card.active { border-color: #00a8cc; background-color: #e6f7fa; }
+
+        /* Actions */
+        .action-area { display: flex; gap: 15px; align-items: center; margin-bottom: 30px; }
+        .btn-add-cart { flex: 1; background-color: #00bcd4; color: white; border: none; padding: 15px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .btn-icon { width: 50px; height: 50px; border: 1px solid #ddd; border-radius: 50%; background: white; cursor: pointer; }
+
+        /* Benefits */
+        .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 14px; margin-bottom: 30px; }
+        .benefit-item strong { display: block; }
+        .benefit-item span { color: #777; font-size: 12px; }
+
+        /* Specs Table */
+        .specs-section { margin-top: 40px; }
+        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">OptiVision</div>
+        <input type="text" class="search-bar" placeholder="Tìm kiếm kính cho mặt tròn, vuông...">
+        <div class="header-links">
+            <span>Thử kính AI</span>
+            <span>Gợi ý khuôn mặt</span>
+            <span>🛒 0</span>
+        </div>
+    </header>
+
+    <div class="breadcrumb">Trang chủ / Ray-Ban Classic Round Frame</div>
+
+    <div class="product-main">
+
+        <div class="product-images">
+            <img src="https://via.placeholder.com/600x500" alt="Kính" class="main-image">
+            <div class="thumbnail-list">
+                <div class="thumbnail"></div>
+                <div class="thumbnail"></div>
+                <div class="thumbnail"></div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <div class="brand" th:text="${brand}">Ray-Ban</div>
+            <h1 class="title" th:text="${productName}">Classic Round Frame</h1>
+            <div class="price" th:text="${price}">2.500.000đ</div>
+
+            <div class="desc">
+                Thiết kế cổ điển kết hợp công nghệ hiện đại. Gọng kính được làm từ chất liệu acetate cao cấp, mang lại sự thoải mái tối đa khi đeo cả ngày.
+            </div>
+
+            <div class="order-types">
+                <div class="order-card active">
+                    <strong>Mua gọng sẵn</strong><br><span style="font-size: 12px">Giao ngay</span>
+                </div>
+                <div class="order-card">
+                    <strong>Đặt trước</strong><br><span style="color:red; font-size: 12px">-15%</span>
+                </div>
+                <div class="order-card">
+                    <strong>Lắp tròng</strong><br><span style="font-size: 12px">Theo đơn</span>
+                </div>
+            </div>
+
+            <div class="action-area">
+                <button class="btn-add-cart">Thêm vào giỏ hàng</button>
+                <button class="btn-icon">♡</button>
+                <button class="btn-icon">➦</button>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <strong>✓ Chính hãng 100%</strong>
+                    <span>Bảo hành 12 tháng</span>
+                </div>
+                <div class="benefit-item">
+                    <strong>🚚 Miễn phí vận chuyển</strong>
+                    <span>Cho đơn từ 500k</span>
+                </div>
+                <div class="benefit-item">
+                    <strong>↻ Đổi trả 30 ngày</strong>
+                    <span>Không hài lòng hoàn tiền</span>
+                </div>
+                <div class="benefit-item">
+                    <strong>💬 Tư vấn miễn phí</strong>
+                    <span>Hỗ trợ 24/7</span>
+                </div>
+            </div>
+
+            <div class="specs-section">
+                <h3>Thông số kỹ thuật</h3>
+                <div class="specs-grid">
+                    <div><strong>Kích thước:</strong> 52-20-145 mm</div>
+                    <div><strong>Chất liệu gọng:</strong> Acetate cao cấp</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
